@@ -66,7 +66,7 @@ const Formulario = (setPersona) => {
                 <div>
                     <label htmlFor="genero">Genero</label><br />
                     <input type="radio" id="masculino" value={sexo} onChange={(e) => setSexo(e.target.value)} />
-                    <label for="html"> Masculino</label>
+                    <label htmlfor="sexo"> Masculino</label>
                     <input type="radio" id="femenino" value={sexo} onChange={(e) => setSexo(e.target.value)} />
                     <label for="css"> Femenino</label><br />
 
