@@ -1,14 +1,14 @@
 import { useState } from 'react';
 
-const Formulario = (persona, setPersona) => {
+const Formulario = ({ setPersona }) => {
     const [edad, setEdad] = useState(0)
     const [peso, setPeso] = useState(0)
     const [sexo, setSexo] = useState('')
     const [fa, setFa] = useState(0)
     const [error, setError] = useState(false)
-    
 
-    const validaFormulario = (e => {
+
+    const validaFormulario = e => {
         e.preventDefault();
         if ([edad, peso, sexo, fa].includes('' || 0)) {
             setError(true);
@@ -40,16 +40,16 @@ const Formulario = (persona, setPersona) => {
             return (gastoBasal() * fa)
         }
 
-         const objetoPersona = {
-            edad,
-            peso,
-            sexo,
+        const objetoPersona = {
+            /*             edad,
+                        peso,
+                        sexo, */
             fa,
             geb: gastoBasal(),
-            get: caloriasFinal()
-         }
-        console.log(objetoPersona);
-    })
+            get: caloriasFinal().toFixed(2)
+        }
+        setPersona(objetoPersona)
+    }
 
 
 
@@ -67,7 +67,7 @@ const Formulario = (persona, setPersona) => {
                     <input type="number" id='peso' placeholder=' Peso' className='p-2 block rounded-md w-full mb-1' value={peso} onChange={(e) => setPeso(e.target.value)} />
                 </div>
                 <div>
-                <label for="fa">Selecciona tu sexo: </label>
+                    <label for="fa">Selecciona tu sexo: </label>
 
                     <select name="" id="sexo" value={sexo} onChange={(e) => setSexo(e.target.value)}>
                         <option value="">-Selecciona-</option>
