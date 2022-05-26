@@ -1,11 +1,12 @@
 import { useState } from 'react';
 
-const Formulario = (setPersona) => {
+const Formulario = (persona, setPersona) => {
     const [edad, setEdad] = useState(0)
     const [peso, setPeso] = useState(0)
     const [sexo, setSexo] = useState('')
     const [fa, setFa] = useState(0)
     const [error, setError] = useState(false)
+    
 
     const validaFormulario = (e => {
         e.preventDefault();
@@ -16,7 +17,7 @@ const Formulario = (setPersona) => {
         setError(false)
 
         const gastoBasal = () => {
-            if (sexo === 'masculino') {
+            if (sexo == 'masculino') {
                 if (edad >= 18 && edad <= 29) {
                     return ((13.37 * peso) + 747)
                 } if (edad >= 30 && edad <= 59) {
@@ -39,13 +40,15 @@ const Formulario = (setPersona) => {
             return (gastoBasal() * fa)
         }
 
-        // const objetoPersona = {
-
-        // }
-        // setPersona(objetoPersona)
-
-        console.log(gastoBasal());
-        console.log(caloriasFinal());
+         const objetoPersona = {
+            edad,
+            peso,
+            sexo,
+            fa,
+            geb: gastoBasal(),
+            get: caloriasFinal()
+         }
+        console.log(objetoPersona);
     })
 
 
@@ -64,17 +67,20 @@ const Formulario = (setPersona) => {
                     <input type="number" id='peso' placeholder=' Peso' className='p-2 block rounded-md w-full mb-1' value={peso} onChange={(e) => setPeso(e.target.value)} />
                 </div>
                 <div>
-                    <label htmlFor="genero">Genero</label><br />
-                    <input type="radio" id="masculino" value={sexo} onChange={(e) => setSexo(e.target.value)} />
-                    <label for="masculino"> Masculino</label>
-                    <input type="radio" id="femenino" value={sexo} onChange={(e) => setSexo(e.target.value)} />
-                    <label for="femenino"> Femenino</label><br />
+                <label for="fa">Selecciona tu sexo: </label>
+
+                    <select name="" id="sexo" value={sexo} onChange={(e) => setSexo(e.target.value)}>
+                        <option value="">-Selecciona-</option>
+                        <option value={'masculino'}>Masculino</option>
+                        <option value={'femenino'}>Femenino</option>
+                    </select>
 
                 </div>
                 <div>
                     <label for="fa">Factores de actividad: </label>
 
                     <select name="" id="fa" value={fa} onChange={(e) => setFa(e.target.value)}>
+                        <option value="">-Selecciona-</option>
                         <option value="1.2">Sedentario</option>
                         <option value="1.3">Ligero</option>
                         <option value="1.5">Moderado</option>
