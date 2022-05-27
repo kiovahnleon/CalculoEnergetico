@@ -54,33 +54,31 @@ const Formulario = ({ setPersona }) => {
 
 
     return (
-        <div className='bg-[#8EBED2] mx-3 rounded-md p-3 mb-2 md:w-1/2 lg:w-2/5 h-fit'>
-            <h1 className='bg-[#2E86AB] p-2 text-center font-bold text-3xl mb-3 rounded-md text-white'>Datos</h1>
+        <div className='bg-[#4a5759] mx-3 rounded-md p-3 mb-2 md:w-1/2 lg:w-2/5 h-fit'>
+            <h1 className='bg-[#dedbd2] p-2 text-center font-bold text-3xl mb-3 rounded-md text-black uppercase'>Datos</h1>
             <form className='' onSubmit={validaFormulario}>
                 {error && <p className='p-2 m-2 rounded-md text-center font-bold bg-[#03045E] text-white'>Debes llenar todos los campos!</p>}
                 <div className='mb-3 mt-5'>
-                    <label htmlFor="edad">Edad </label>
+                    <label htmlFor="edad" className='text-white'>Edad </label>
                     <input type="number" id='edad' placeholder=' edad' className='p-2 block rounded-md w-full mb-1' value={edad} onChange={(e) => setEdad(e.target.value)} />
                 </div>
                 <div className='mb-3'>
-                    <label htmlFor="peso">Peso </label>
+                    <label htmlFor="peso" className='text-white'>Peso </label>
                     <input type="number" id='peso' placeholder=' Peso' className='p-2 block rounded-md w-full mb-1' value={peso} onChange={(e) => setPeso(e.target.value)} />
                 </div>
                 <div>
-                    <label for="fa">Selecciona tu sexo: </label>
 
-                    <select name="" id="sexo" value={sexo} onChange={(e) => setSexo(e.target.value)}>
-                        <option value="">-Selecciona-</option>
+                    <select className='w-full text-center p-2 mb-3 rounded-md' name="" id="sexo" value={sexo} onChange={(e) => setSexo(e.target.value)}>
+                        <option value="">-Selecciona tu sexo-</option>
                         <option value={'masculino'}>Masculino</option>
                         <option value={'femenino'}>Femenino</option>
                     </select>
 
                 </div>
                 <div>
-                    <label for="fa">Factores de actividad: </label>
 
-                    <select name="" id="fa" value={fa} onChange={(e) => setFa(e.target.value)}>
-                        <option value="">-Selecciona-</option>
+                    <select className='w-full text-center p-2 mb-2 rounded-md' name="" id="fa" value={fa} onChange={(e) => setFa(e.target.value)}>
+                        <option value="">-¿Que tan activo eres?-</option>
                         <option value="1.2">Sedentario</option>
                         <option value="1.3">Ligero</option>
                         <option value="1.5">Moderado</option>
@@ -90,7 +88,7 @@ const Formulario = ({ setPersona }) => {
 
                 </div>
                 <div className='my-3 '>
-                    <input type="submit" id='submit' className='bg-[#00B4DB] hover:bg-[#009cbf] p-2 rounded-md font-extrabold text-white block w-full'></input>
+                    <input type="submit" id='submit' className='bg-[#7ebc89] hover:bg-[#6ca977] p-2 rounded-md font-extrabold text-white block w-full'></input>
                 </div>
 
 
